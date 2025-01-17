@@ -1,0 +1,298 @@
+# This is an OpenAPI Specification (https://swagger.io/specification/)
+# for gp-connect/patient-facing/user-permissions owned by NHS Digital (https://digital.nhs.uk/)
+openapi: 3.0.0
+info:
+  version: Computed and injected at build time by `scripts/set_version.py`
+  title: GP Connect - Patient Permissions
+  contact:
+    name: GP Connect - Patient Permissions API Support
+    url: https://digital.nhs.uk/developer/help-and-support
+    email: api.management@nhs.net
+  description: |
+    ## Overview
+
+    ![GP Connect Patient Facing User Permissions API Overview](https://raw.githubusercontent.com/NHSDigital/gp-connect-user-permissions/master/specification/diagrams/overview.svg)
+
+    Use this API to list and manage the permissions a patient has to their
+    medical record and a selection of services provided at their GP practice.
+
+    You can:
+
+    - get a patient's permissions
+
+    You cannot:
+
+    - change a patient's permissions
+
+    To use this API, the end user must be a patient who is:
+
+    - registered with the GP practice
+    - registered with NHS login to P9 identity verification level
+
+    This API allows you to manage the permissions for:
+
+    - prescriptions
+    - medical record
+
+    This API is designed to respect the policy changes made in order to
+    allow patients to access their future medical record entries.
+    For more details, see
+    [access to patient records through the NHS App](https://digital.nhs.uk/services/nhs-app/nhs-app-guidance-for-gp-practices/guidance-on-nhs-app-features/accelerating-patient-access-to-their-record).
+
+    ## Who can use this API
+
+    This API:
+
+    - is only for use by patient-facing applications
+    - can only be used where there is a legal basis to do so
+
+    Make sure you have a valid use case before you go too far with your
+    development. To do this, [contact us](https://digital.nhs.uk/developer/help-and-support).
+
+    You must do this before you can go live (see
+    [Onboarding](#api-description__onboarding) below).
+
+    ## Related APIs
+
+    The GP Connect suite of APIs include the following related APIs:
+
+    - [GP Connect Access Document - FHIR API](https://digital.nhs.uk/developer/api-catalogue/gp-connect-access-document-fhir) - retrieve unstructured documents from a patient's GP practice record.
+    - [GP Connect Access Record: HTML - FHIR API](https://digital.nhs.uk/developer/api-catalogue/gp-connect-access-record-html-fhir) - view a patient's GP practice record, with read-only access.
+    - [GP Connect Access Record: Structured - FHIR API](https://digital.nhs.uk/developer/api-catalogue/gp-connect-access-record-structured-fhir) - retrieve structured information from a patient's GP practice record.
+    - [GP Connect Send Document - FHIR API](https://digital.nhs.uk/developer/api-catalogue/gp-connect-send-document-fhir) - send a PDF consultation summary to a registered GP practice.
+    - [GP Connect (Patient Facing) Access Record - FHIR API](https://digital.nhs.uk/developer/api-catalogue/gp-connect-patient-facing-access-record-fhir) - access a patient's GP records with the GP Connect (patient facing) Access Record - FHIR API.
+    - [GP Connect (Patient Facing) Prescriptions - FHIR API](https://digital.nhs.uk/developer/api-catalogue/gp-connect-patient-facing-prescriptions-fhir) - manage a patient's prescriptions using the GP Connect (patient facing) Prescriptions - FHIR API.
+
+    ## API status and roadmap
+
+    This API is [in development](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
+
+    - it is available for testing in the sandbox environment
+    - it is not available for production use
+    - we might make breaking changes, but only if we cannot avoid it, and we will give advance notice
+
+    To see our roadmap or to suggest, comment or vote on features for this API, see our [interactive product backlog](https://nhs-digital-api-management.featureupvote.com/suggestions/341390/gp-connect-user-permissions).
+
+    If you have any other queries,
+    [contact us](https://digital.nhs.uk/developer/help-and-support).
+
+    ## Service level
+
+    This API is a silver service, meaning it is operational 24 hours a day, 365 days a year but
+    only supported during business hours (8am to 6pm), Monday to Friday
+    excluding bank holidays.
+
+    For more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).
+
+    ## Technology
+
+    This API is
+    [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#basic-rest).
+
+    ### Resources
+
+    Use the [GP Connect User Management Implementation Guide](https://simplifier.net/guide/GP-Connect-Patient-Facing-User-Management/Home?version=current) to assit with your integration.
+
+    ## Network access
+
+    This API is available on the internet and, indirectly, on the
+    [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network).
+
+    For more details, see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).
+
+    ## Security and authorisation
+
+    This API is
+    [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis),
+    meaning an end user must be present and authenticated to use it.
+
+    The end user must be:
+
+    - a patient
+    - authenticated with NHS login to P9 identity verification level
+
+    The API uses Open ID Connect to authenticate the end user and OAuth 2.0 to
+    authorise the calling system. It supports the following security pattern
+    using NHS login:
+
+    - [User-restricted RESTful APIs - NHS login separate authentication and authorisation](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/user-restricted-restful-apis-nhs-login-separate-authentication-and-authorisation)
+
+    ## Environments and testing
+
+    | Purpose          | URL                                                                        |
+    | -------          | ---                                                                        |
+    | Sandbox          | `https://sandbox.api.service.nhs.uk/gp-connect/patient-facing/user-permissions` |
+    | Integration test | Not yet available                                                          |
+    | Production       | Not yet available                                                          |
+
+    ### Sandbox testing
+
+    Our [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing):
+
+    - is for early developer testing
+    - only covers a limited set of scenarios
+    - is stateless, so it does not store data
+    - is open access, so does not allow you to test authorisation
+
+    For more details on sandbox testing, or to try out the sandbox using our
+    "Try this API" feature, see the documentation for each endpoint.
+
+    Alternatively, you can try out the sandbox using our Postman collection:
+
+    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/34036044-57060177-4760-4184-8af5-fd3d7c268327?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D34036044-57060177-4760-4184-8af5-fd3d7c268327%26entityType%3Dcollection%26workspaceId%3Dbad72f85-20d6-41c3-bd55-f30bf83f8c63)
+
+    ### Integration testing (not yet available)
+
+    Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing):
+
+    - is for formal integration testing
+    - is stateful, so it does persist data
+    - includes authorisation
+
+    For more details see
+     [integration testing with our RESTful APIs](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing-with-our-restful-apis).
+
+    ## Onboarding
+
+    This API is not yet available for onboarding.
+
+    ## Errors
+
+    We use standard HTTP status codes to show whether an API request succeeded
+    or not. They are usually in the range:
+
+    - 200 to 299 if it succeeded, including code 202 if it was accepted by an
+      API that needs to wait for further action
+
+    - 400 to 499 if it failed because of a client error by your application
+
+    - 500 to 599 if it failed because of an error on our server
+
+    Errors specific to each API are shown in the Endpoints section, under
+    Response. See our
+    [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes)
+    for more on errors.
+
+servers:
+  - url: https://sandbox.api.service.nhs.uk/gp-connect/patient-facing/user-permissions
+    description: Sandbox environment
+
+paths:
+  /Patient/{id}:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+      - $ref: "#/components/parameters/BearerAuthorization"
+      - $ref: "#/components/parameters/CorrelationID"
+      - $ref: "#/components/parameters/RequestID"
+    get:
+      operationId: getPatientPermissions
+      summary: Get a patient's permissions
+      description: |
+        ## Overview
+
+        Get a patient's permissions. The permissions describe the level of
+        access the patient has to their medical record and the prescriptions service provided at their GP practice.
+
+        The medical record permission includes the access level the patient
+        has to both their current and their historical medical record.
+        The prescriptions service permissions represent the
+        patient's current access level.
+
+        ## Use cases
+
+        Use cases covered by this endpoint include:
+
+        * building a UI so only the elements the patient has access to are
+          available
+        * presenting permissions to the patient so they can see what they do
+          and do not have access to
+
+      responses:
+        200:
+          description: Successful response
+          headers:
+            X-Correlation-ID:
+              $ref: "#/components/headers/X-Correlation-ID"
+            X-Request-ID:
+              $ref: "#/components/headers/X-Request-ID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PatientPermission"
+              examples:
+                GetResponsePermissionsFull:
+                  $ref: "#/components/examples/GetResponsePermissionsFull"
+        4XX:
+          description: |
+            An error occurred as follows:
+
+            | HTTP status | Error code             | Description                                                                                                                                |
+            | ----------- | ----------             | -----------                                                                                                                                |
+            | 400         | INVALID_RESOURCE_ID    | Invalid NHS number.                                                                                                                        |
+            | 404         | PATIENT_NOT_FOUND      | The patient's NHS number in the provider system is not associated with a NHS number status indicator code of 'Number present and verified' |
+            | 404         | PATIENT_NOT_FOUND      | The request is for the permissions of a non-Regular/GMS patient (i.e. the patient's registered practice is somewhere else)                 |
+            | 404         | PATIENT_NOT_FOUND      | The request is for the permissions of an inactive or deceased patient                                                                      |
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                InvalidRequestError:
+                  $ref: "#/components/examples/InvalidRequestError"
+
+components:
+  headers:
+    X-Correlation-ID:
+      schema:
+        $ref: "#/components/schemas/CorrelationID"
+    X-Request-ID:
+      schema:
+        $ref: "#/components/schemas/RequestID"
+
+  parameters:
+    BearerAuthorization:
+      $ref: "components/parameters/BearerAuthorization.yaml"
+    CorrelationID:
+      $ref: "components/parameters/CorrelationID.yaml"
+    Id:
+      $ref: "components/parameters/Id.yaml"
+    RequestID:
+      $ref: "components/parameters/RequestID.yaml"
+
+  schemas:
+    BaseRequest:
+      $ref: "components/schemas/BaseRequest.yaml"
+    CorrelationID:
+      $ref: "components/schemas/CorrelationID.yaml"
+    ErrorResponse:
+      $ref: "components/schemas/ErrorResponse.yaml"
+    MedicalRecordAccessLevelEnum:
+      $ref: "components/schemas/MedicalRecordAccessLevelEnum.yaml"
+    MedicalRecordCurrentPermissionItem:
+      $ref: "components/schemas/MedicalRecordCurrentPermissionItem.yaml"
+    MedicalRecordHistoricalPermissionItem:
+      $ref: "components/schemas/MedicalRecordHistoricalPermissionItem.yaml"
+    MedicalRecordPermission:
+      $ref: "components/schemas/MedicalRecordPermission.yaml"
+    MedicalRecordPermissionTypeEnum:
+      $ref: "components/schemas/MedicalRecordPermissionTypeEnum.yaml"
+    MedicalRecordTypeEnum:
+      $ref: "components/schemas/MedicalRecordTypeEnum.yaml"
+    PatientPermission:
+      $ref: "components/schemas/PatientPermission.yaml"
+    PrescriptionsAccessLevelEnum:
+      $ref: "components/schemas/PrescriptionsAccessLevelEnum.yaml"
+    PrescriptionsPermission:
+      $ref: "components/schemas/PrescriptionsPermission.yaml"
+    PrescriptionsPermissionTypeEnum:
+      $ref: "components/schemas/PrescriptionsPermissionTypeEnum.yaml"
+    RequestID:
+      $ref: "components/schemas/RequestID.yaml"
+
+  examples:
+    InvalidRequestError:
+      $ref: "components/examples/InvalidRequestError.yaml"
+    GetResponsePermissionsFull:
+      $ref: "components/examples/GetResponsePermissionsFull.yaml"
+    RejectedRequestError:
+      $ref: "components/examples/RejectedRequestError.yaml"
