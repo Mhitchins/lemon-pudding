@@ -51,21 +51,19 @@ info:
 
     You must:
 
-    * be compliant with the GP Connect Direct Care API Information Governance Model
+    * be compliant with the [GP Connect Direct Care API Information Governance Model](https://developer.nhs.uk/apis/gpconnect/designprinciples_ig_principles.html)
 
     #### Clinical safety
 
     You must:
 
-    * have a clinical safety officer (CSO) who is responsible for DCB0129 and, if necessary, DCB0160. For more on clinical risk management, visit Clinical risk management standards
+    * have a clinical safety officer (CSO) who is responsible for [DCB0129](https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb0129-clinical-risk-management-its-application-in-the-manufacture-of-health-it-systems) and, if necessary, [DCB0160](https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb0160-clinical-risk-management-its-application-in-the-deployment-and-use-of-health-it-systems). For more on clinical risk management, visit Clinical risk management standards
 
     ## Related APIs
 
     The following APIs are related to this API:
 
     * [GP Connect (Patient Facing) User Permissions API](https://digital.nhs.uk/developer/api-catalogue/gp-connect-patient-facing-user-permissions) - use this API to manage a patient's permissions as held by the GP practice systems.
-
-    * [GP Connect (Patient Facing) Appointment Management - FHIR API](https://digital.nhs.uk/developer/api-catalogue/gp-connect-patient-facing-appointment-management-fhir) - use this API to manage GP practice appointments.
 
     * [GP Connect (Patient Facing) Prescriptions - FHIR API ](https://digital.nhs.uk/developer/api-catalogue/gp-connect-patient-facing-prescriptions-fhir) - use this API to manage a patient's prescriptions.
 
@@ -78,7 +76,7 @@ info:
 
     To see our roadmap or to suggest, comment or vote on features for this API, see our [interactive product backlog.](https://nhs-digital-api-management.featureupvote.com/suggestions/342393/gp-connect-get-structured-record)
 
-    If you have any other queries, [contact us](https://digital.nhs.uk/developer/help-and-support)
+    If you have any other queries, [contact us](https://digital.nhs.uk/developer/help-and-support).
 
     ## Service level
 
@@ -95,7 +93,7 @@ info:
 
     ### Resources
 
-    Use the [GP Connect Patient Facing Access Record Implementation Guide](https://simplifier.net/guide/GP-Connect-Patient-Facing-Access-Record/Home?version=current) to assist with your integration.
+    Use the [GP Connect (Patient Facing) Access Record - FHIR API Implementation Guide](https://simplifier.net/guide/GP-Connect-Patient-Facing-Access-Record/Home?version=current) to assist with your integration.
 
     This is the FHIR specification for GP Connect Access Record - FHIR API.
 
@@ -123,7 +121,7 @@ info:
 
     | Purpose          | URL                                                   |
     | -------          | ---                                                   |
-    | Sandbox          | [https://sandbox.api.service.nhs.uk/gp-connect/patient-facing/access-record-fhir/FHIR/STU3](https://sandbox.api.service.nhs.uk/gp-connect/patient-facing/access-record-fhir/FHIR/STU3) |
+    | Sandbox          | Not yet available                                     |         
     | Integration test | Not yet available                                     |
     | Production       | Not yet available
 
