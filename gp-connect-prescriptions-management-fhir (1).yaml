@@ -2,7 +2,7 @@
 # for gp-connect/patient-facing/prescriptions-management-fhir/FHIR/R4 owned by NHS Digital (https://digital.nhs.uk/)
 openapi: '3.0.0'
 info:
-  title: 'GP Connect Prescriptions Management FHIR API'
+  title: 'GP Connect Prescriptions Management - FHIR API'
   version: 'Computed and injected at build time by `scripts/set_version.py`'
   description: |
     ## Overview
@@ -31,7 +31,7 @@ info:
 
     ## Who can use this API
 
-    This API can be used by developers of clinical systems that support clinicans delivering direct care. It is a patient-facing API.
+    This API can be used by developers of clinical systems that support clinicians delivering direct care. It is a patient-facing API.
 
     This API:
 
@@ -51,13 +51,14 @@ info:
 
     You must:
 
-    * be compliant with the GP Connect Direct Care API Information Governance Model
+    * be compliant with the [GP Connect Direct Care API Information Governance Model](https://developer.nhs.uk/apis/gpconnect/designprinciples_ig_principles.html)
+
 
     #### Clinical safety
 
     You must:
 
-    * have a clinical safety officer (CSO) who is responsible for DCB0129 and, if necessary, DCB0160. For more on clinical risk management, visit Clinical risk management standards
+    * have a clinical safety officer (CSO) who is responsible for [DCB0129](https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb0129-clinical-risk-management-its-application-in-the-manufacture-of-health-it-systems) and, if necessary, [DCB0160](https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb0160-clinical-risk-management-its-application-in-the-deployment-and-use-of-health-it-systems). For more on clinical risk management, visit Clinical risk management standards
 
     ## Related APIs
 
@@ -74,11 +75,11 @@ info:
 
     ## API status and roadmap
 
-    This API is in [development](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses)
+    This API is in [development](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses).
 
     To see our roadmap or to suggest, comment or vote on features for this API, see our [interactive product backlog](https://nhs-digital-api-management.featureupvote.com/suggestions/341619/gp-connect-prescriptions-management-fhir).
 
-    If you have any other queries, [contact us](https://digital.nhs.uk/developer/help-and-support)
+    If you have any other queries, [contact us](https://digital.nhs.uk/developer/help-and-support).
 
     ## Service level
 
@@ -92,7 +93,7 @@ info:
 
     It conforms to the [FHIR](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#fhir) global standard for health care data exchange, specifically to [FHIR R4 (v4.0.1)](https://hl7.org/fhir/r4/), except that it does not support the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) interaction.
 
-    It includes some country-specific FHIR extensions, which are built against [FHIR UK Core, specifically [UKcore.stu2 1.1.3](https://simplifier.net/guide/uk-core-implementation-guide-stu2?version=1.1.3).
+    It includes some country-specific FHIR extensions, which are built against FHIR UK Core, specifically [UKcore.stu2 1.1.3](https://simplifier.net/guide/uk-core-implementation-guide-stu2?version=1.1.3).
 
     You do not need to know much about FHIR to use this API - FHIR APIs are just RESTful APIs that follow specific rules. In particular:
 
@@ -106,7 +107,7 @@ info:
 
     ### Resources
 
-    Use the [GP Connect Prescriptions Management Implementation Guide](https://simplifier.net/guide/gp-connect--patient-facing-services--prescriptions?version=0.1.1-private-beta) to assist with your integration.
+    Use the [GP Connect (Patient Facing) Prescriptions Management - FHIR API Implementation Guide](https://simplifier.net/guide/gp-connect--patient-facing-services--prescriptions?version=0.1.1-private-beta) to assist with your integration.
 
     This is the FHIR specification for GP Connect Prescriptions.
 
@@ -182,9 +183,9 @@ info:
 
     - 500 to 599 if it failed because of an error on our server
 
-    Errors specific to each API are shown in the Endpoints section, under Response. See our [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes) for more on errors.
+    Errors specific to each API are shown in the Endpoints section under Response. See our [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes) for more on errors.
 
-    API Specific errors can be found [here](https://simplifier.net/guide/gp-connect--patient-facing-services--prescriptions/Home/Design/Errors-and-issues?version=0.1.1-private-beta).
+    API-specific errors can be found [here](https://simplifier.net/guide/gp-connect--patient-facing-services--prescriptions/Home/Design/Errors-and-issues?version=0.1.1-private-beta).
   contact:
     name: 'gp-connect/patient-facing/prescriptions-management-fhir/FHIR/R4 API Support'
     url: 'https://digital.nhs.uk/developer/help-and-support'
